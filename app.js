@@ -76,7 +76,7 @@ app.post('/movies/', async (request, response) => {
       movie (director_id, movie_name, lead_actor)
     VALUES
       ('${directorId}', '${movieName}', '${leadActor}');`
-  await database.run(postMovieQuery)
+  await db.run(postMovieQuery)
   response.send('Movie Successfully Added')
 })
 
