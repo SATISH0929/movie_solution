@@ -62,7 +62,7 @@ app.get('/movies/:movieId/', async (request, response) => {
     SELECT
       movie_name
     FROM
-      movie;
+      movie
     WHERE
       movie_id = ${movieId};`
   const movie = await db.get(getMoviesQuery)
@@ -90,7 +90,7 @@ app.put('/movies/:movieId/', async (request, response) => {
       director_id = ${directorId},
       movie_name = ${movieName},
       lead_actor = ${leadActor}
-    WHARE
+    WHERE
       movie_id = ${movieId};`
   await db.run(updateMovieQuery)
   response.send('Movie Details Updated')
@@ -101,7 +101,7 @@ app.delete('/movies/:movieId/', async (request, response) => {
   const deleteMovieQuery = `
     DELETE FROM
       movie
-    WHARE
+    WHERE
       movie_id = ${movieId};`
   await db.run(deleteMovieQuery)
   response.send('Movie Removed')
@@ -127,7 +127,7 @@ app.get('/directors/:directorId/movies/', async (request, response) => {
     SELECT
       movie_name
     FROM
-      movie;
+      movie
     WHERE
       director_id = ${directorId};`
   const moviesArray = await db.all(getDirectorMovieQuery)
